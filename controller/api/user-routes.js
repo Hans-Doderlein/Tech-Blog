@@ -15,6 +15,8 @@ router.get("/logout", (req, res) => {
 router.post("/signup", async (req, res) => {
   const newUser = await User.create(req.body);
 
+  req.session.loggedIn = true;
+
   res.status(200).json({ message: "Signup sucessful" });
 });
 

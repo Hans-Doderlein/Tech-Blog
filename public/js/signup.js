@@ -14,7 +14,7 @@ signupForm.addEventListener("submit", async (e) => {
     });
 
     if (res.ok) {
-      document.location.replace("/api/users/login");
+      document.location.replace("/");
     } else {
       console.log("failed to signup");
     }
