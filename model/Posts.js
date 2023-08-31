@@ -25,14 +25,14 @@ Posts.init(
       allowNull: false,
     },
     comments: {
-      type: DataTypes.ARRAY,
+      type: DataTypes.JSON,
       allowNull: true,
     },
-    username: {
-      type: DataTypes.STRING,
+    user_id: {
+      type: DataTypes.INTEGER,
       references: {
         model: "user",
-        key: "username",
+        key: "id",
       },
     },
   },

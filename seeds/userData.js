@@ -1,20 +1,18 @@
 const sequelize = require("../config/connection");
 const User = require("../model/User");
 
-const userData = [
-  {
-    username: "Nicholas99",
-    email: "hand.doderlein99@gmail.com",
-    password: "tempPassword",
-  },
-];
-
 const seedUsers = async () => {
-  await sequelize.sync({ force: true });
+  try {
+    await sequelize.sync({ force: false });
 
-  await User.create(userData);
-
-  process.exit(0);
+    const newuser = await User.create({
+      username: "Nicholas99",
+      email: "hans.doderlein99@gmail.com",
+      password: "tempPassword",
+    });
+  } catch (error) {
+    console.log(`error: ${error}`);
+  }
 };
 
 module.exports = seedUsers;
