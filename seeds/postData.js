@@ -8,7 +8,7 @@ async function seedPosts() {
     title: "first post",
     content: "this is my first post",
     created_on: getDate(),
-    comments: [],
+
     user_id: 1,
   });
 }
