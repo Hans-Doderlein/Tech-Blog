@@ -1,0 +1,33 @@
+<section class="card">
+  <div>
+    <header>
+      <h2>{{posts.title}}</h2>
+      <p>Created by {{posts.user.username}} on {{posts.created_on}}</p>
+    </header>
+    <div>
+      {{posts.content}}
+    </div>
+    <button id="commentButton">Add Comment</button>
+  </div>
+</section>
+
+<section id="addComment" data-post={{posts.id}} data-user={{user_id}}>
+  <header><h4>New Comment</h4></header>
+  <form id="comment-form"><div><textarea
+        name="newComment"
+        id="newComment"
+        cols="30"
+        rows="10"
+      ></textarea></div>
+    <button id="saveComment" type="submit">Save Comment</button>
+  </form>
+
+</section>
+
+<section id="loadComments">
+    {{#each posts.comments as |comment|}}
+    {{>comment-details}}
+    {{/each}}
+</section>
+
+<script src="/js/comment.js"></script>
