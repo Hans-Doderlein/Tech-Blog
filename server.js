@@ -11,14 +11,6 @@ const helpers = require("./utils/helpers");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// Define a middleware to reset the session expiration
-function resetSessionExpiration(req, res, next) {
-  if (req.session) {
-    req.session.touch();
-  }
-  next();
-}
-
 const sess = {
   secret: "Super secret secret",
   cookie: {
@@ -29,11 +21,9 @@ const sess = {
   store: new SequelizeStore({
     db: sequelize,
   }),
-  rolling: true,
 };
 
 app.use(session(sess));
-app.use(resetSessionExpiration);
 
 const hbs = exphbs.create({ helpers });
 

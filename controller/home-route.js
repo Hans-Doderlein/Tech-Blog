@@ -2,7 +2,9 @@ const router = require("express").Router();
 const { Posts, User } = require("../model/index");
 const withAuth = require("../utils/auth");
 
-router.get("/", async (req, res) => {
+const { activity } = require("../utils/helpers");
+
+router.get("/", activity, async (req, res) => {
   try {
     console.log("router started");
     const dbPostData = await Posts.findAll({

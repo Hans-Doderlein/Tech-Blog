@@ -2,15 +2,17 @@ const { Posts, Comments, User } = require("../../model");
 const withAuth = require("../../utils/auth");
 const { getDate } = require("../../utils/helpers");
 
+const { activity } = require("../../utils/helpers");
+
 const router = require("express").Router();
 
-router.get("/new", (req, res) => {
+router.get("/new", withAuth, activity, (req, res) => {
   console.log("route used");
 
   res.render("newPost", { loggedIn: req.session.loggedIn });
 });
 
-router.post("/new", async (req, res) => {
+router.post("/new", withAuth, activity, async (req, res) => {
   console.log("req body", req.body);
   const { postTitle: title, postContent: content } = req.body;
 
@@ -25,7 +27,7 @@ router.post("/new", async (req, res) => {
   console.log("newpost route called: ", newPost);
 });
 
-router.get("/:id", withAuth("poop"), async (req, res) => {
+router.get("/:id", withAuth, activity, async (req, res) => {
   const post = await Posts.findByPk(req.params.id, {
     include: [{ model: Comments }, { model: User }],
   });
@@ -39,7 +41,7 @@ router.get("/:id", withAuth("poop"), async (req, res) => {
   });
 });
 
-router.delete("/", withAuth("poop"), async (req, res) => {
+router.delete("/", withAuth, activity, async (req, res) => {
   console.log(req.body);
   Posts.destroy({
     where: {
@@ -51,7 +53,7 @@ router.delete("/", withAuth("poop"), async (req, res) => {
   console.log("delete route started");
 });
 
-router.get("/update/:id", withAuth("poop"), async (req, res) => {
+router.get("/update/:id", withAuth, activity, async (req, res) => {
   const post = await Posts.findByPk(req.params.id);
   console.log("post:", post);
 
@@ -60,7 +62,7 @@ router.get("/update/:id", withAuth("poop"), async (req, res) => {
   res.render("updatePost", { posts, loggedIn: req.session.loggedIn });
 });
 
-router.put("/", withAuth("poop"), async (req, res) => {
+router.put("/", withAuth, activity, async (req, res) => {
   const { id, title, content } = req.body;
   console.log("update route reached");
   await Posts.update(

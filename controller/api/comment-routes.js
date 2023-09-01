@@ -1,9 +1,10 @@
 const { Comments } = require("../../model");
 const withAuth = require("../../utils/auth");
+const { activity } = require("../../utils/helpers");
 
 const router = require("express").Router();
 
-router.post("/add", withAuth("acad"), async (req, res) => {
+router.post("/add", withAuth, activity, async (req, res) => {
   const newComment = await Comments.create({
     ...req.body,
     username: req.session.username,

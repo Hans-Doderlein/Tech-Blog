@@ -15,4 +15,23 @@ module.exports = {
 
     return formattedDate;
   },
+  activity: (req, res, next) => {
+    if (!req.session) {
+      req.session = {};
+    }
+    if (!req.session.lastActivity) {
+      req.session.lastActivity = Date.now();
+    }
+
+    if (Date.now() - req.session.lastActivity > 60 * 1000) {
+      console.log("out of time");
+      req.session.destroy(() => {
+        res.redirect("/api/users/login");
+      });
+      return;
+    }
+
+    req.session.lastActivity = Date.now();
+    next();
+  },
 };
