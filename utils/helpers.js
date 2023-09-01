@@ -1,4 +1,5 @@
 module.exports = {
+  //gets date in proper format
   getDate: () => {
     // Create a new Date object
     const today = new Date();
@@ -15,6 +16,8 @@ module.exports = {
 
     return formattedDate;
   },
+
+  //checks activity of user, logs user out after 5 min
   activity: (req, res, next) => {
     if (!req.session) {
       req.session = {};
@@ -23,7 +26,7 @@ module.exports = {
       req.session.lastActivity = Date.now();
     }
 
-    if (Date.now() - req.session.lastActivity > 60 * 1000) {
+    if (Date.now() - req.session.lastActivity > 5 * 60 * 1000) {
       console.log("out of time");
       req.session.destroy(() => {
         res.redirect("/api/users/login");

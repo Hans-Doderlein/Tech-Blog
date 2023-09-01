@@ -18,12 +18,14 @@ function getDate() {
 const commentForm = document.getElementById("comment-form");
 const commentButton = document.getElementById("commentButton");
 
+//onclick displays add comment feature
 commentButton.addEventListener("click", (e) => {
   e.preventDefault();
 
   document.getElementById("addComment").style.display = "block";
 });
 
+//on submit makes request for creating commment using user input from form
 commentForm.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -37,15 +39,20 @@ commentForm.addEventListener("submit", async (e) => {
 
   const post_id = commentSection.dataset.post;
 
-  const res = await fetch("/api/comments/add", {
-    method: "post",
-    body: JSON.stringify({ content, created_on, user_id, post_id }),
-    headers: { "Content-Type": "application/json" },
-  });
+  try {
+    const res = await fetch("/api/comments/add", {
+      method: "post",
+      body: JSON.stringify({ content, created_on, user_id, post_id }),
+      headers: { "Content-Type": "application/json" },
+    });
 
-  document.getElementById("addComment").style.display = "none";
+    //hides comment feature until button is clicked again
+    document.getElementById("addComment").style.display = "none";
 
-  if (res.ok) {
-    document.location.replace("/api/posts/" + post_id);
+    if (res.ok) {
+      document.location.replace("/api/posts/" + post_id);
+    }
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 });

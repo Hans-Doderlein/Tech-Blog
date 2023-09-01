@@ -2,6 +2,7 @@ const Comments = require("./Comments");
 const Posts = require("./Posts");
 const User = require("./User");
 
+//defines all associations between models
 User.hasMany(Posts, {
   foreignKey: "user_id",
   onDelete: "CASCADE",

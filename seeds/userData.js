@@ -1,6 +1,7 @@
 const sequelize = require("../config/connection");
 const User = require("../model/User");
 
+//seeds users with intiial data
 const seedUsers = async () => {
   try {
     await sequelize.sync({ force: false });
@@ -11,7 +12,7 @@ const seedUsers = async () => {
       password: "tempPassword",
     });
   } catch (error) {
-    console.log(`error: ${error}`);
+    res.status(400).json({ error: error });
   }
 };
 

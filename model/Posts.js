@@ -3,6 +3,7 @@ const sequelize = require("../config/connection");
 
 class Posts extends Model {}
 
+//create and initialize Posts model
 Posts.init(
   {
     id: {

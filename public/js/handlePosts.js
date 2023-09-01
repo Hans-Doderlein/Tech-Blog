@@ -1,30 +1,41 @@
+//makes delete request using user input
 async function deletePost(id) {
-  console.log("delete button clicked: " + id);
-  const res = await fetch("/api/posts/", {
-    method: "DELETE",
-    body: JSON.stringify({ id }),
-    headers: { "Content-Type": "application/json" },
-  });
+  try {
+    const res = await fetch("/api/posts/", {
+      method: "DELETE",
+      body: JSON.stringify({ id }),
+      headers: { "Content-Type": "application/json" },
+    });
 
-  if (res.ok) {
-    document.location.replace("/api/dashboard");
+    if (res.ok) {
+      document.location.replace("/api/dashboard");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 }
+
+//makes update request using user input
 async function updatePostContent(id) {
-  console.log("update button clicked");
   const title = document.getElementById("post-title").value.trim();
   const content = document.getElementById("post-content").value.trim();
-  const res = await fetch("/api/posts/", {
-    method: "PUT",
-    body: JSON.stringify({ id, title, content }),
-    headers: { "Content-Type": "application/json" },
-  });
 
-  if (res.ok) {
-    document.location.replace("/api/dashboard");
+  try {
+    const res = await fetch("/api/posts/", {
+      method: "PUT",
+      body: JSON.stringify({ id, title, content }),
+      headers: { "Content-Type": "application/json" },
+    });
+
+    if (res.ok) {
+      document.location.replace("/api/dashboard");
+    }
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 }
 
-async function updatePost(id) {
+//loads post to be updated
+function updatePost(id) {
   document.location.replace(`/api/posts/update/${id}`);
 }

@@ -1,22 +1,22 @@
 const router = require("express").Router();
 const { Posts, User } = require("../model/index");
-const withAuth = require("../utils/auth");
-
 const { activity } = require("../utils/helpers");
 
+//route for loading homepage
 router.get("/", activity, async (req, res) => {
   try {
-    console.log("router started");
+    //retrieves all posts made by any user
     const dbPostData = await Posts.findAll({
       include: [{ model: User }],
     });
-    console.log(JSON.stringify(dbPostData, null, 2));
 
+    //serializes retrieved data
     const posts = dbPostData.map((post) => post.get({ plain: true }));
 
+    //renders homepage with serialized data
     res.render("homepage", { posts, loggedIn: req.session.loggedIn });
   } catch (error) {
-    console.log("error: ", error);
+    res.status(400).json({ error: error });
   }
 });
 module.exports = router;

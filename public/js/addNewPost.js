@@ -1,8 +1,8 @@
 const newPostForm = document.getElementById("post-form");
 
+//on submit, makes request using data from the new post form
 newPostForm.addEventListener("submit", async (e) => {
   e.preventDefault();
-  console.log("form submitted");
 
   const postTitle = document.getElementById("postTitle").value.trim();
   const postContent = document.getElementById("postContent").value.trim();

@@ -1,24 +1,26 @@
 const loginForm = document.getElementById("login-form");
 
+//on submit, makes login post request
 loginForm.addEventListener("submit", async (e) => {
   e.preventDefault();
   const email = document.getElementById("email-login").value.trim();
   const password = document.getElementById("password-login").value.trim();
-  console.log("submit form faunction", email, password);
 
-  if (email && password) {
-    console.log("email and password checkeing");
-    const res = await fetch("/api/users/login", {
-      method: "post",
-      body: JSON.stringify({ email, password }),
-      headers: { "Content-Type": "application/json" },
-    });
-    console.log(res);
+  try {
+    if (email && password) {
+      const res = await fetch("/api/users/login", {
+        method: "post",
+        body: JSON.stringify({ email, password }),
+        headers: { "Content-Type": "application/json" },
+      });
 
-    if (res.ok) {
-      document.location.replace("/");
-    } else {
-      console.log("failed to login");
+      if (res.ok) {
+        document.location.replace("/");
+      } else {
+        console.log("failed to login");
+      }
     }
+  } catch (error) {
+    res.status(400).json({ error: error });
   }
 });

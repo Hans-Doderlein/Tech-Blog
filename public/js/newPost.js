@@ -1,8 +1,8 @@
 const newPostButton = document.getElementById("newPostButton");
 
-newPostButton.addEventListener("click", async (e) => {
+//on click, loads new post template
+newPostButton.addEventListener("click", (e) => {
   e.preventDefault();
 
-  console.log("post button clicked");
   document.location.replace("/api/posts/new");
 });
