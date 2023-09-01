@@ -16,6 +16,8 @@ router.post("/signup", async (req, res) => {
   const newUser = await User.create(req.body);
 
   req.session.loggedIn = true;
+  req.session.userId = newUser.id;
+  req.session.username = newUser.username;
 
   res.status(200).json({ message: "Signup sucessful" });
 });
@@ -43,8 +45,9 @@ router.post("/login", async (req, res) => {
 
   req.session.loggedIn = true;
   req.session.userId = validUser.id;
+  req.session.username = validUser.username;
 
-  res.status(200).json({ message: "login successful" });
+  res.status(200).json({ message: "login successful", user_id: validUser.id });
 });
 
 router.get("/signup", (req, res) => {

@@ -1,10 +1,12 @@
 <section>
-  <div><a href=""><h3>{{title}}</h3></a><p>Created by
+  <div><h3>{{title}}</h3><p>Created by
       {{user.username}}
       on
       {{created_on}}</p></div>
 
   <p>{{content}}</p>
-  <div><a href="">Update Post</a><a href="">Delete Post</a></div>
+  <div><button id="updatePost" onclick="updatePost({{id}})">Update Post</button>
+
+    <button id="deletePost" onclick="deletePost({{id}})">Delete Post</button></div>
 
 </section>

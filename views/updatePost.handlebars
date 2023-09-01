@@ -1,0 +1,29 @@
+<h2 class="page-title">Update post</h2>
+<form class="form post-form" id="post-form">
+  <div class="form-group">
+    <label for="post-title">Title</label>
+    <input
+      class="form-input"
+      type="text"
+      id="post-title"
+      value="{{posts.title}}"
+    />
+  </div>
+  <div class="form-group">
+    <textarea
+      name="newPost"
+      id="post-content"
+      cols="30"
+      rows="10"
+    >{{posts.content}}</textarea>
+  </div>
+  <div class="form-group">
+    <button
+      class="btn btn-primary"
+      onclick="updatePostContent({{posts.id}})"
+    >Update Post</button>
+  </div>
+
+</form>
+
+<script src="/js/handlePosts.js"></script>
