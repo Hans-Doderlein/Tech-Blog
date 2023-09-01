@@ -2,3 +2,7 @@
   text-decoration: none;
   color: red;
 }
+
+#addComment {
+  display: none;
+}
