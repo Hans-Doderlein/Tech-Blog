@@ -17,7 +17,9 @@ loginForm.addEventListener("submit", async (e) => {
       if (res.ok) {
         document.location.replace("/");
       } else {
-        console.log("failed to login");
+        const data = await res.json();
+        console.log(data);
+        document.getElementById("loginResponse").textContent = data.message;
       }
     }
   } catch (error) {

@@ -1,12 +1,23 @@
-<section>
-  <div><h3>{{title}}</h3><p>Created by
+<section class="card">
+  <div class="homePostheader">
+    <h3>{{title}}</h3>
+
+    <p>Created by
       {{user.username}}
       on
-      {{created_on}}</p></div>
+      {{created_on}}
+    </p>
 
-  <p>{{content}}</p>
-  <div><button id="updatePost" onclick="updatePost({{id}})">Update Post</button>
+  </div>
 
-    <button id="deletePost" onclick="deletePost({{id}})">Delete Post</button></div>
+  <p class="homePostContent">{{content}}</p>
+
+  <div class="dashbtns">
+    <button id="updatePost" class="postbtn" onclick="updatePost({{id}})">Update
+      Post</button>
+
+    <button id="deletePost" class="postbtn" onclick="deletePost({{id}})">Delete
+      Post</button>
+  </div>
 
 </section>

@@ -1,12 +1,15 @@
 <section class="card">
-  <a href="/api/posts/{{id}}">
-  <div><header class="postHeader">{{title}}</header>
+
+  <div class="homePostHeader">
+    <a href="/api/posts/{{id}}">
+      <header class="postTitle"><h3>{{title}}</h3></header>
     </a>
-     <p>Created by {{user.username}} on {{created_on}}</p>
-    </div>
+    <p>Created by
+      {{user.username}}
+      on
+      {{created_on}}</p>
+  </div>
 
-    <p>{{content}}</p>
-
-  
+  <p class="homePostContent">{{content}}</p>
 
 </section>

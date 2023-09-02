@@ -1,29 +1,38 @@
-<h2 class="page-title">Update post</h2>
-<form class="form post-form" id="post-form">
-  <div class="form-group">
-    <label for="post-title">Title</label>
-    <input
-      class="form-input"
-      type="text"
-      id="post-title"
-      value="{{posts.title}}"
-    />
-  </div>
-  <div class="form-group">
-    <textarea
-      name="newPost"
-      id="post-content"
-      cols="30"
-      rows="10"
-    >{{posts.content}}</textarea>
-  </div>
-  <div class="form-group">
-    <button
-      class="btn btn-primary"
-      onclick="updatePostContent({{posts.id}})"
-    >Update Post</button>
-  </div>
+<div class="card">
+  <h2 class="page-title">Update post</h2>
+  <form class="form post-form login-form homePostContent" id="post-form">
+    <div class="form-group updgroup">
+      <label for="post-title" id="updtitle" class="page-title">Title:</label>
+      <input
+        class="form-input"
+        type="text"
+        id="post-title"
+        value="{{posts.title}}"
+      />
+    </div>
+    <div class="form-group updgroup">
+      <label
+        for="post-content"
+        id="updtitle"
+        class="page-title"
+      >Content:</label>
+      <textarea
+        name="newPost"
+        id="post-content"
+        cols="30"
+        rows="10"
+        class="form-input"
+      >{{posts.content}}</textarea>
+    </div>
+    <div class="form-group">
+      <button
+        class="btn btn-primary lgnbtn"
+        onclick="updatePostContent({{posts.id}})"
+      >Update Post</button>
+    </div>
 
-</form>
+  </form>
+
+</div>
 
 <script src="/js/handlePosts.js"></script>

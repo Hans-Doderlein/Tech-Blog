@@ -1,8 +1,157 @@
-.postHeader {
-  text-decoration: none;
-  color: red;
+:root {
+  --pc: rgb(26, 2, 2);
+  --sc: rgb(235, 246, 210);
+}
+
+body {
+  background-color: var(--sc);
 }
 
 #addComment {
   display: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.topPage {
+  background-color: var(--pc);
+}
+
+nav a {
+  color: var(--sc);
+  padding: 30px;
+  margin: 20px;
+  font-size: large;
+}
+
+nav {
+  margin: 10px;
+}
+
+.techBlog {
+  color: var(--pc);
+  background-color: var(--sc);
+  border-radius: 0.7rem;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 0px 0px rgb(111, 118, 97);
+}
+
+.techBlog h1 {
+  font-weight: 700;
+}
+
+.homePostHeader {
+  color: var(--sc);
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--pc);
+}
+
+.postTitle {
+  text-decoration: none;
+  color: var(--sc);
+  padding: 0;
+}
+
+.postTitle:hover {
+  color: blue;
+}
+
+.card {
+  margin: 18px 0;
+  border: 3px solid var(--pc);
+}
+
+.homePostContent {
+  background-color: var(--sc);
+  color: var(--pc);
+  padding: 8px 30px;
+  margin-bottom: 0;
+  font-size: larger;
+  min-height: 80px;
+}
+
+.page-title {
+  color: var(--sc);
+  background-color: var(--pc);
+  padding-left: 20px;
+  font-weight: 400;
+  font-size: larger;
+  padding: 8px 0 8px 15px;
+  margin-bottom: 0;
+}
+
+.login-card {
+  padding: 0;
+  margin: 0;
+}
+
+.signupLink {
+  background-color: var(--sc);
+  padding-bottom: 15px;
+}
+
+.signupLink a {
+  padding-left: 28px;
+}
+
+.lgnbtn {
+  margin-top: 15px;
+  width: 100%;
+  background-color: var(--pc);
+  color: var(--sc);
+  border-color: transparent;
+}
+
+.form-input {
+  width: 100%;
+}
+
+#commentButton {
+  margin-top: 0;
+}
+
+.cmnt {
+  margin: 0;
+}
+
+.dashbtns {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  background-color: var(--pc);
+  color: var(--sc);
+}
+
+.postbtn {
+  color: var(--pc);
+  background-color: var(--sc);
+}
+
+.postbtn:hover {
+  background-color: green;
+}
+
+#newPostButton {
+  width: 40%;
+  position: relative;
+  left: 30%;
+  margin-bottom: 20px;
+}
+
+#updtitle {
+  width: 100%;
+}
+
+.updgroup {
+  margin-bottom: 15px;
+}
+
+#deletePost:hover {
+  background-color: red;
 }

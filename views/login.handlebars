@@ -1,21 +1,25 @@
-<div class="row justify-space-between-md">
+<div class="card row">
   <div class="login-card">
     <h2 class="page-title">Login</h2>
-    <form class="form login-form" id="login-form">
+    <form class="form login-form homePostContent" id="login-form">
       <div class="form-group">
-        <label for="email-login">Email:</label>
+        <label for="email-login">Email</label>
+        <br />
         <input class="form-input" type="text" id="email-login" />
       </div>
       <div class="form-group">
-        <label for="password-login">Password:</label>
+        <label for="password-login">Password</label>
+        <br />
         <input class="form-input" type="password" id="password-login" />
       </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Login</button>
+      <div class="btnGroup">
+        <button class="btn btn-primary lgnbtn" type="submit">Login</button>
       </div>
 
+      <div id="loginResponse"></div>
+
     </form>
-    <div>
+    <div class="signupLink">
       <a href="/api/users/signup">Not a Member? Sign up</a>
     </div>
   </div>

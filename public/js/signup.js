@@ -7,6 +7,21 @@ signupForm.addEventListener("submit", async (e) => {
   const email = document.getElementById("email-signup").value.trim();
   const password = document.getElementById("password-signup").value.trim();
 
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  if (!emailRegex.test(email)) {
+    console.log("email sucks");
+    document.getElementById("signupError").textContent =
+      "Please enter a valid Email";
+    return;
+  }
+
+  if (!(password.length > 5)) {
+    document.getElementById("signupError").textContent =
+      "Passwrod must be greater than 6 characters";
+    return;
+  }
+
   try {
     if (email && password && username) {
       const res = await fetch("/api/users/signup", {
